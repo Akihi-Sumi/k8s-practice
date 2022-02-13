@@ -1,0 +1,40 @@
+# 定義ファイル（Pod）
+apiVersion: APIグループとそのバージョン (参照：https://kubernetes.io/ja/docs/reference/kubectl/overview/#resource-types)
+kind: リソースの種類
+metadata: メタデータ
+  name: リソースの名前
+  labels: 任意のラベル
+spec: リソースの中身
+  containers: コンテナの構成
+  - name: コンテナの名前
+    image: 元にするイメージ
+    ports: 使うポート
+
+
+# 定義ファイル（デプロイメント）
+apiVersion:
+kind:
+metadata:
+  name: デプロイメントの名前
+spec:
+  selector: セレクターの設定
+    matchLabels: ラベルをセレクターで選択して管理する
+  replicas: レプリカ数の設定
+  template: テンプレート
+    metadata: Podのメタデータを書く
+    spec: Podのスペックを書く
+
+
+# 定義ファイル（サービス）
+apiVersion:
+kind:
+metadata:
+  name: サービスの名前
+spec:
+  type: サービスの種類
+  ports:ポートの設定
+  - port: サービスのポート
+    targetPort: コンテナのポート
+    protocol: 通信に使うプロトコル
+    nodePort: ワーカーノードのポート
+selector: セレクターの設定

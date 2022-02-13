@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube000dep
+spec:
+  selector:
+    matchLabels:
+      app: kube000k8s
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: kube000k8s
+    spec:
+      containers:
+      - name: kube000ex90
+        image: nginx
+        ports:
+        - containerPort: 80
